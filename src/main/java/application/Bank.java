@@ -25,4 +25,18 @@ public class Bank {
     Set<Account> findAccounts(Client client) {
         return clientAccountsMap.get(client);
     }
+
+    public void removeClient(Client client) {
+        Set<Account> accounts = findAccounts(client);
+
+        for (Account account : accounts) {
+            accountClientMap.remove(account);
+        }
+
+        clientAccountsMap.remove(client);
+    }
+
+    public boolean hasClient(Client client) {
+        return clientAccountsMap.containsKey(client);
+    }
 }
