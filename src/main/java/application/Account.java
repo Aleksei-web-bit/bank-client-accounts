@@ -3,7 +3,7 @@ package application;
 import java.util.Objects;
 
 public class Account {
-    private static int currentAccountId = 0;
+    private static int currentAccountId = 1;
     private final int accountId;
     private int coins;
 

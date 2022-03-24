@@ -19,10 +19,40 @@ public class Bank {
     }
 
     Client findClient(Account account) {
+        if (account == null) {
+            throw new IllegalArgumentException("Значение account не должно быть null.");
+        }
+
+        if (!hasAccount(account)) {
+            throw new IllegalStateException("Account с id = " + account.getAccountId() + " не найден.");
+        }
+
         return accountClientMap.get(account);
     }
 
+    Client findClientOld(Account account) {
+        if (account == null) {
+            System.out.println("Значение account: null");
+            return null;
+        }
+
+        if (hasAccount(account) == true) {
+            return accountClientMap.get(account);
+        } else {
+            System.out.println("Данного счёта не существует!");
+            return null;
+        }
+    }
+
     Set<Account> findAccounts(Client client) {
+        if (client == null) {
+            throw new IllegalArgumentException("Значение client не должно быть null.");
+        }
+
+        if (!hasClient(client)) {
+            throw new IllegalStateException("Клиент с именем: " + client.getName() + " не найден.");
+        }
+
         return clientAccountsMap.get(client);
     }
 
@@ -38,5 +68,18 @@ public class Bank {
 
     public boolean hasClient(Client client) {
         return clientAccountsMap.containsKey(client);
+    }
+
+    public boolean hasAccount(Account account) {
+        return accountClientMap.containsKey(account);
+    }
+
+    public boolean isNotNull(Object obj) {
+        if (obj != null) {
+            return true;
+        } else {
+            System.out.println("Значение объекта: null");
+            return false;
+        }
     }
 }

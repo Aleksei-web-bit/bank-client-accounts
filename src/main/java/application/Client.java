@@ -24,6 +24,10 @@ public class Client {
         return Objects.hash(name, age);
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
