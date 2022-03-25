@@ -24,7 +24,7 @@ public class Bank {
         }
 
         if (!hasAccount(account)) {
-            throw new IllegalStateException("Account с id = " + account.getAccountId() + " не найден.");
+            throw new AccountNotFoundException(account.getAccountId());
         }
 
         return accountClientMap.get(account);
